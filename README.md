@@ -2,6 +2,8 @@
 
 Lightweight and efficient driver for the QMC5883P / QMC5883L 3-axis compass (a clone of the older HMC5883L, found on most "GY-271" boards).
 
+Fork: Adds auto-calibration & examples.
+
 ## Features
 
 - **MCU Compatibility**: Tested on ESP32 & AVR, runs on any board with Wire library
