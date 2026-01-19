@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <qmc5883p.h>
 
-QMC5883P mag;
+QMC5883P mag(QMC5883P::ODR::ODR_10Hz);
 
 void setup() {
     Serial.begin(115200);

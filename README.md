@@ -2,7 +2,11 @@
 
 Lightweight and efficient driver for the QMC5883P / QMC5883L 3-axis compass (a clone of the older HMC5883L, found on most "GY-271" boards).
 
-Fork: Adds auto-calibration & examples.
+Fork of this lovely library
+* Re-orgs to have an example, and separate that from the library source.
+* Add options for frequency
+* It doesn't need to track time w/ frequency - it's limited by the sensor
+* Switch to auto calibration
 
 ## Features
 
