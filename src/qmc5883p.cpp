@@ -135,6 +135,9 @@ float QMC5883P::getHeadingDeg(float declDeg) {
     float x = (_lastRawX / 1000.0f - _offX) * _scaleX;
     float y = (_lastRawY / 1000.0f - _offY) * _scaleY;
 
+    if (x == 0.0f && y == 0.0f) 
+        return 0.0f; // invalid heading
+
     // 1) Basic angle (-π … π)
     float hdg = atan2(y, x);
     // 2) Add declination (deg → rad)
@@ -174,4 +177,13 @@ bool QMC5883P::writeReg(uint8_t reg, uint8_t val) {
     _bus->write(reg);
     _bus->write(val);
     return (_bus->endTransmission() == 0);
+}
+
+void QMC5883P::reset() {
+    _autoCalibrate = true;
+    _offX = 0.0f; _offY = 0.0f; _offZ = 0.0f;
+    _scaleX = 1.0f; _scaleY = 1.0f; _scaleZ = 1.0f;
+    _minRawX = INT16_MAX; _maxRawX = INT16_MIN;
+    _minRawY = INT16_MAX; _maxRawY = INT16_MIN;
+    _minRawZ = INT16_MAX; _maxRawZ = INT16_MIN;
 }

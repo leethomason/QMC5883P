@@ -22,6 +22,8 @@ public:
     bool readXYZ(float *xyz);                  // xyz[3] → µT, true = new data and calibrated
     float getHeadingDeg(float declDeg = 0.0f); // Heading calculation with internal data caching
 
+    void reset(); // reset hard and soft iron calibration, re-enabling auto-calibration
+
     // Calling either of these disables auto-calibration
     void setHardIronOffsets(float xOff, float yOff, float zOff = 0.0f);
     void setSoftIronScales(float scaleX, float scaleY, float scaleZ = 1.0f);
